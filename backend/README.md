@@ -68,13 +68,9 @@ One note before you delve into your tasks: for each endpoint you are expected to
 
 REVIEW_COMMENT
 ```
-This README is missing documentation of your endpoints. Below is an example for your endpoint to get all categories. Please use it as a reference for creating your documentation and resubmit your code. 
 
 Endpoints
-GET '/categories'
-GET ...
-POST ...
-DELETE ...
+
 
 GET '/categories'
 - Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
@@ -86,6 +82,48 @@ GET '/categories'
 '4' : "History",
 '5' : "Entertainment",
 '6' : "Sports"}
+
+GET '/questions'
+- Fetches a list of questions with in which the keys are the ids and the value is the corresponding string of the question 
+- Request Arguments: page number , by default page=1
+- Returns: An object with key:value pairs. The following are keys:values that will be returned within the object
+questions:list of all questions
+total questions:number of questions 
+categories:a dictionary of all categories 
+
+GET '/categories/<int:category_id>/questions'
+- Fetches a list of questions based on specific category
+- Request Arguments: category id and page number , by default page=1
+- Returns: An object with key:value pairs. The following are keys:values that will be returned within the object
+questions:list of all questions
+total questions:number of questions 
+current_category:the category of questions 
+
+POST '/questions'
+- Create new question 
+- Request Arguments: An object with key:value pairs. contains question_text:question , answer_text:answer , 
+category_of_question:category and difficulty:number of difficulty from between 1 and 5
+- Returns: id of created question 
+
+POST '/questions/search'
+- Retrive list of questions based on specific word
+- Request Arguments: search word and page number , by default page=1
+- Returns: An object with key:value pairs. The following are keys:values that will be returned within the object
+questions:list of all questions that contain the search word
+total questions:number of questions 
+
+POST '/quizzes'
+- Retrive a random question to Play the quiz for specific category or all categories
+- Request Arguments: list of previous questions (initially empty) and quiz category 
+- Returns: An object with key:value pairs. The following are keys:values that will be returned within the object
+question:Random question not in previous questions or None if we finish all questions
+previous_questions:list of all previous questions have been played 
+
+DELETE '/questions/<int:question_id>'
+- DELETE question based on question id 
+- Request Arguments: question id
+- Returns: id of deleted question 
+
 
 ```
 
